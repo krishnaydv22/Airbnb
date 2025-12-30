@@ -13,9 +13,9 @@ import java.util.List;
 public interface AvailabilityWriteRepository extends JpaRepository<Availability, Long> {
 
 
-    List<Availability> findByBookingId(Long bookingId);
+    List<Availability> findByBookingId(long bookingId);
 
-    List<Availability> findByAirbnbId(String airbnbId);
+    List<Availability> findByAirbnbId(long airbnbId);
 
     List<Availability> findByAirbnbIdAndDateBetween(Long airBnbId, LocalDate checkInDate,LocalDate checkOutDate);
 

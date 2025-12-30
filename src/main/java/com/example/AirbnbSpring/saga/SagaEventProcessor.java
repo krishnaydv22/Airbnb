@@ -21,6 +21,7 @@ public class SagaEventProcessor {
                 // no action
                 break;
             case "BOOKING_CONFIRM_REQUESTED":
+                log.info("saga event from processor {}", sagaEvent.getSagaId());
                 bookingEventHandler.handleBookingConfirmRequested(sagaEvent);
                 break;
             case "BOOKING_CONFIRMED":

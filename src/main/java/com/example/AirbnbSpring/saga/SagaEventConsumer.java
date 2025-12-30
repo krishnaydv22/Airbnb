@@ -21,8 +21,10 @@ public class SagaEventConsumer {
 
     @Scheduled(fixedDelay = 500) // polls every events in every 500ms
     public void consume(){
-       String eventJson =  redisTemplate.opsForList().leftPop(SAGA_QUEUE, 1, TimeUnit.DAYS.SECONDS);
        try {
+           String eventJson =  redisTemplate.opsForList().leftPop(SAGA_QUEUE, 1, TimeUnit.SECONDS);
+           log.info("Event JSON: {}", eventJson);
+
            if (eventJson != null && !eventJson.isEmpty()) {
                SagaEvent sagaEvent = objectMapper.readValue(eventJson, SagaEvent.class);
                log.info("proccessing {} saga event ", sagaEvent.getSagaId());
@@ -32,7 +34,6 @@ public class SagaEventConsumer {
            }
        }catch(Exception e){
          log.error("error processing saga event ", e.getMessage());
-         throw new RuntimeException("error processing saga event",e);
        }
 
     }

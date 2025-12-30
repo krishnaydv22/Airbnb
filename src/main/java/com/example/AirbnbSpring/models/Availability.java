@@ -24,7 +24,7 @@ public class Availability {
     private Long id;
 
     @Column(nullable = false)
-    private String airbnbId;
+    private long airbnbId;
 
     @Column(nullable = false)
     private LocalDate date;

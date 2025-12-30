@@ -14,7 +14,9 @@ import jakarta.persistence.LockModeType;
 @Repository
 public interface BookingWriteRepository extends JpaRepository<Booking, Long> {
 
-    List<Booking> findByAirbnbId(String airbnbId);
+    Optional<Booking> findById(Long id);
+
+    List<Booking> findByAirbnbId(long  airbnbId);
 
     Optional<Booking> findByIdempotencyKey(String key);
 
